@@ -1,6 +1,8 @@
 # COMS6998 Homework3 Tweet Sentiment Analysis
 =============================
 
+http://www.columbia.edu/~tw2484/6998hw3/
+
 ## Steps
 1. First we use the sample word count mapper on EMR to get a list of words with frequencies.
 
@@ -14,4 +16,4 @@
 
 6. Now we have a list of words sorted by their frequencies for each day, we then look them up in the sentiment dictionary(Downloaded from http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html) to assign the sentiment to those words. We skip those words that don't appear in the dictionary since they're meaningless. For each day we only count the first thirty most frequent meaningful words.
 
-7. We then use wordle applet to generate a wordle graph for each day. We also calculate the overall sentiment by taking the sum of the count of the thirty words multiplied by their sentiment values, and thenuse highcharts.js to display them.
+7. We then use wordle applet to generate a wordle graph for each day. We also calculate the overall sentiment by taking the sum of the count of the thirty words multiplied by their sentiment values, and then use Highcharts.js to display them.

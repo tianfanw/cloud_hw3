@@ -84,7 +84,6 @@
                     $('.carousel-inner div:nth-child(' + slide + ')').addClass('active');
                     $('.carousel-indicators li:nth-child(' + slide + ')').addClass('active');
                     $('#wordle-title').html('Wordle Graph of Day ' + slide);
-                    console.log(slide);
                 }
               }
             },
@@ -112,6 +111,13 @@
             fillColor: 'white'
           }
         }]
+      });
+      $('#wordle-carousel').carousel();
+      $('#wordle-carousel').bind('slide.bs.carousel', function (e) {
+        var $active = $(this).find('.item.active')
+        , children = $active.parent().children()
+        , nextPos = children.index(e.relatedTarget);
+        $('#wordle-title').html('Wordle Graph of Day ' + (nextPos + 1));
       });
     });
   </script>
