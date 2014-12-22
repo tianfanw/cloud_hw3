@@ -1,0 +1,200 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <style type="text/css">
+  body {
+    background-color: #333;
+    color: #FFF;
+  }
+
+  #title {
+    font-size: 20px;
+    margin-top:10px;
+    color: #fff;
+  }
+  #wordle-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .carousel-inner > .item > img {
+    margin: 0 auto;
+    height: 360px;
+  }
+  .carousel-indicators li {
+    background-color: #444;
+  }
+
+  .carousel-indicators .active {
+    background-color: #000;
+  }
+  #wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+  }
+
+  /* Set the fixed height of the footer here */
+  #push,
+  #footer {
+    height: 60px;
+  }
+  #footer {
+    background-color: #333;
+  }
+
+  /* Lastly, apply responsive CSS fixes as necessary */
+  @media (max-width: 767px) {
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .container .credit {
+    margin: 20px 0;
+    text-align:center;
+  }
+
+  code {
+    font-size: 80%;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $('#chart').highcharts({
+        title: {
+          text: 'Overall Sentiment of Topic "School"'
+        },
+        plotOptions: {
+          series: {
+            point: {
+              events: {
+                mouseOver: function () {
+                  var slide = this.category.split(' ')[1];
+                    $('#wordle-carousel .carousel-inner .item.active').removeClass('active');
+                    $('#wordle-carousel .carousel-indicators .active').removeClass('active');
+                    $('.carousel-inner div:nth-child(' + slide + ')').addClass('active');
+                    $('.carousel-indicators li:nth-child(' + slide + ')').addClass('active');
+                    $('#wordle-title').html('Wordle Graph of Day ' + slide);
+                    console.log(slide);
+                }
+              }
+            },
+          }
+        },
+        xAxis: {
+          categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10']
+        },
+        labels: {
+          items: [{
+            style: {
+              left: '50px',
+              top: '18px',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+            }
+          }]
+        },
+        series: [{
+          type: 'spline',
+          name: 'sentiment',
+          data: [-604, -232, -317, -756, -523, -343, -120, -220, -26, -62],
+          marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[5],
+            fillColor: 'white'
+          }
+        }]
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <div class="container">
+      <div class="navbar-header">
+        <a id="title" href="#" class="navbar-brand">CLOUD COMPUTING & BIG DATA HW3 - Tweet Sentiment Analysis</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 40px">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="chart" style="width: 100%; height: 400px; margin: 0 auto"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="wordle-title">
+            <p>Wordle Graph of Day 1</p>
+          </div>
+          <div id="wordle-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+              <li data-target="#wordle-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#wordle-carousel" data-slide-to="1"></li>
+              <li data-target="#wordle-carousel" data-slide-to="2"></li>
+              <li data-target="#wordle-carousel" data-slide-to="3"></li>
+              <li data-target="#wordle-carousel" data-slide-to="4"></li>
+              <li data-target="#wordle-carousel" data-slide-to="5"></li>
+              <li data-target="#wordle-carousel" data-slide-to="6"></li>
+              <li data-target="#wordle-carousel" data-slide-to="7"></li>
+              <li data-target="#wordle-carousel" data-slide-to="8"></li>
+              <li data-target="#wordle-carousel" data-slide-to="9"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <img src="wordles/1.jpg" alt="Day 1">
+              </div>
+              <div class="item">
+                <img src="wordles/2.jpg" alt="Day 2">
+              </div>
+              <div class="item">
+                <img src="wordles/3.jpg" alt="Day 3">
+              </div>
+              <div class="item">
+                <img src="wordles/4.jpg" alt="Day 4">
+              </div>
+              <div class="item">
+                <img src="wordles/5.jpg" alt="Day 5">
+              </div>
+              <div class="item">
+                <img src="wordles/6.jpg" alt="Day 6">
+              </div>
+              <div class="item">
+                <img src="wordles/7.jpg" alt="Day 7">
+              </div>
+              <div class="item">
+                <img src="wordles/8.jpg" alt="Day 8">
+              </div>
+              <div class="item">
+                <img src="wordles/9.jpg" alt="Day 9">
+              </div>
+              <div class="item">
+                <img src="wordles/10.jpg" alt="Day 10">
+              </div>
+            </div>
+            <a class="left carousel-control" href="#wordle-carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#wordle-carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="push"></div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit"><a href="mailto:tw2484@columbia.edu">Tianfan Wang (tw2484@columbia.edu)</a> & <a href="mailto:gl2483@columbia.edu">Guanqi Luo(gl2483@columbia.edu)</a></p>
+    </div>
+  </div>
+</body>
+</html>
